@@ -58,13 +58,13 @@ app.use('/auth', (req, res) => {
 // Admin Microservice
 app.use('/admin', authToken, authRole('admin'), (req, res) => {
     console.log("GATEWAY -> ADMIN SERVICE");
-    proxy.web(req, res, { target: 'http://localhost:5002' });
+    proxy.web(req, res, { target: 'http://172.31.27.31:5002' });
 });
 
 // User Microservice
 app.use('/user', authToken, authRole('user'), (req, res) => {
     console.log("GATEWAY -> USER SERVICE");
-    proxy.web(req, res, { target: 'http://localhost:5003' });
+    proxy.web(req, res, { target: 'http://172.31.22.236:5003' });
 });
 
 proxy.on('error', (err, req, res) => {
